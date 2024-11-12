@@ -27,6 +27,7 @@ class FinishItem {
     const finished = data.filter((note) => note.checked).length;
 
     const progress = total === 0 ? 0 : (finished / total) * 100;
+    this._progressBar.value = progress;
 
     this._progressText.textContent = `${finished}/${total}`;
   }
