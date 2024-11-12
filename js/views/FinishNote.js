@@ -1,4 +1,4 @@
-class FinishItem {
+class FinishNote {
   _parentElement = document.querySelector('.finish__container');
   _progressBar = document.querySelector('#progressBar');
   _progressText = document.querySelector('.progressBar__text p:last-child');
@@ -46,4 +46,4 @@ class FinishItem {
   }
 }
 
-export default new FinishItem();
+export default new FinishNote();
