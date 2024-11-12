@@ -17,13 +17,11 @@ const controlAddTitle = function (newNote) {
 const controlDeleteNote = function (id) {
   model.deleteNote(id);
   TodoView.render(model.state.notes);
-  FinishNote.render(model.state.notes);
 };
 
 const controlEditNote = function (id, newText) {
   model.editNote(id, newText);
   TodoView.render(model.state.notes);
-  FinishNote.render(model.state.notes);
 };
 
 const controlReorder = function (fromIndex, toIndex) {

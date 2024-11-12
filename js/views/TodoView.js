@@ -154,6 +154,9 @@ class TodoView {
     const confirmBtn = item.querySelector('.checkbtn');
     const titleInput = item.querySelector('.item');
 
+    const checkbox = item.querySelector('input[type="checkbox');
+    if (checkbox) checkbox.disabled = true;
+
     // 更新 UI
     if (!item.classList.contains('todo__title')) {
       item.querySelector('.todo__detail').classList.add('focus');
