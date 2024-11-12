@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!--css -->
+    <link rel="stylesheet" href="style.css" />
+    <title>Daily Notes</title>
+  </head>
+  <body>
+    <main class="main__container">
+      <p class="nav-time">12:52:24</p>
+      <!-- nav -->
+      <nav class="nav">
+        <h1>Daily Notes</h1>
+      </nav>
+      <!-- 切換 -->
+      <div class="switch__container">
+        <div class="switch-tabs">
+          <button class="tab active">待辦事項</button>
+          <button class="tab">每日回顧</button>
+        </div>
+      </div>
+
+      <section class="task__container">
+        <!-- 增加任務 -->
+        <div class="todolist__container">
+          <div class="todolist">
+            <h2>今日待辦事項</h2>
+            <div class="addItem__container">
+              <input
+                class="addItem__input"
+                type="text"
+                placeholder="輸入今日任務"
+              />
+              <button class="addItemBtn">新增</button>
+            </div>
+            <div class="todo-container">
+              <ul class="draggable__title-list">
+                <!--
+                <li class="todo__title "  draggable="true">
+                  <span class="fa-solid fa-grip-vertical"></span>
+                  <div class="item">
+                    <input type="text" value="工作事項" disabled />
+                    <div class="btn__container">
+                      <button class="fa-solid fa-pen"></button>
+                      <button class="fa-solid fa-trash"></button>
+                    </div>
+                    <button class="fa-solid fa-check checkbtn hidden"></button>
+                  </div>
+                </li>
+                
+
+                
+              <li class="todo " draggable="true">
+                <span class="fa-solid fa-grip-vertical"></span>
+                <div class="todo__detail">
+                  <input type="checkbox" ></input>
+                  <p>寫文件</p>
+                  <div class="btn__container">
+                    <button class="fa-solid fa-pen"></button>
+                    <button class="fa-solid fa-trash"></button>
+                  </div>
+                  <button class="fa-solid fa-check checkbtn hidden"></button>
+                </div>
+              </li>
+              --></ul>
+              <div class="addNewTitle">
+                <button class="addNewTitle__Btn">
+                  <i class="fa-plus"></i>新增分類標題
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 完成任務 
+        <div class="todolist__container">
+          <div class="todolist">
+            <h2>今日已完成項目</h2>
+            <div class="progress__container">
+            <progress id="progressBar" value="50" max="100"></progress>
+            <div class="progressBar__text">
+              <p>已完成</p>
+              <p>2/10</p>
+            </div>
+            </div>
+           <div class="todo-container">
+            <ul class="draggable-title">
+              <li class="finish__item" draggable="true">
+                <label  class="done">寫文件</label>
+                <div>
+                  <button class="fas fa-rotate-left reseBtn"></button>
+                </div>
+              </li>
+            </ul>
+           </div>
+           <button class="reviewBtn">今日回顧</button>
+
+          </div>
+        </div>
+         -->
+      </section>
+
+      <div class="overlay hidden"></div>
+    </main>
+    <script type="module" src="js/controller.js"></script>
+  </body>
+</html>

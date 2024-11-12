@@ -1,0 +1,583 @@
+:root {
+  --color-grey-900: #282f38;
+  --color-grey-800: #49535f;
+  --color-grey-700: #687380;
+  --color-grey-600: #89929c;
+  --color-grey-500: #adb5bd;
+  --color-grey-400: #ced4da;
+  --color-grey-300: #dee2e6;
+  --color-grey-200: #e9ecef;
+  --color-grey-100: #f8f9fa;
+
+  --color-prim: #0b56ae;
+  --color-prim-dark: #064084;
+
+  --btn-hover: #e6eef6e3;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  background-image: linear-gradient(to bottom right, #24d6d6, #0c1cb2);
+  min-height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.todo.editing,
+.todo__title.editing {
+  position: relative;
+  z-index: 101;
+}
+
+.main__container {
+  position: relative;
+  display: flex;
+  padding: 0.8rem 3.2rem 2.4rem 3.2rem;
+  flex-direction: column;
+  align-items: center;
+  width: 104rem;
+  height: 71rem;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 3rem 4rem 1.6rem rgba(0, 0, 0, 0.2);
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2.4rem 1.6rem 2.4rem;
+  border-bottom: 1px solid #fff;
+  width: 100%;
+  position: relative;
+}
+
+nav > h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 2.4rem;
+  font-weight: 400;
+  line-height: 4rem;
+}
+
+.nav-time {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  font-size: 1.4rem;
+  color: var(--color-grey-800);
+  font-weight: 300;
+}
+
+.switch__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.4rem;
+  width: 64rem;
+  background-color: #fff;
+  padding: 0.4rem;
+  border-radius: 1.2rem;
+}
+
+.tab {
+  font-weight: 400;
+  color: var(--color-grey-600);
+  border: none;
+  background-color: #fff;
+  flex: 1;
+  cursor: pointer;
+  height: 3.6rem;
+  font-size: 1.6rem;
+  border-radius: 0.8rem;
+}
+
+.active {
+  background-color: var(--color-prim);
+  color: #fff;
+}
+
+.todolist__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 64rem;
+  margin-top: 1.6rem;
+  background-color: #fff;
+  border-radius: 1.6rem;
+  padding: 1.6rem 3.2rem;
+  max-height: 53.5rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--color-grey-900);
+}
+
+.addItem__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.addItem__input {
+  flex: 1;
+  height: 4.8rem;
+  padding: 0 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  background-color: transparent;
+  border: 1.5px solid var(--color-grey-800);
+  border-radius: 1.2rem;
+}
+
+.addItem__input::placeholder {
+  color: var(--color-grey-500);
+  font-size: 1.4rem;
+}
+.addItem__input:focus {
+  border: 1px solid var(--color-prim);
+}
+
+.addItemBtn {
+  width: 11.2rem;
+  height: 4.8rem;
+  border: none;
+  background-color: var(--color-prim);
+  color: #fff;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 400;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.addItemBtn:hover {
+  background-color: var(--color-prim-dark);
+}
+
+.addNewTitle {
+  margin-top: 0.8rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  transition: all 0.2s;
+}
+
+.addNewTitle:hover {
+  background-color: var(--btn-hover);
+}
+
+.addNewTitle__Btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  color: var(--color-grey-900);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.task__container {
+  width: 100%;
+  display: flex;
+  gap: 1.6rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.todo-container {
+  width: 100%;
+}
+
+.draggable__title-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.draggable__title-list li {
+  position: relative;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+/* 拖曳時的樣式 */
+.draggable {
+  opacity: 0.6;
+  cursor: grabbing !important;
+
+  z-index: 1000;
+}
+
+.draggable .todo__detail,
+.draggable .item {
+  border: 1px solid var(--color-grey-700);
+  box-shadow: 0 0.4rem 0.6rem rgba(114, 120, 141, 0.15);
+}
+
+/* 拖曳把手樣式 */
+.fa-grip-vertical {
+  cursor: grab;
+  visibility: hidden;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.2s ease;
+}
+
+li:hover .fa-grip-vertical {
+  visibility: visible;
+}
+
+.fa-grip-vertical:hover {
+  background-color: var(--btn-hover);
+}
+
+.fa-grip-vertical:active {
+  cursor: grabbing;
+  background-color: var(--btn-hover);
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+}
+
+li > span {
+  visibility: hidden;
+  color: var(--color-prim);
+  font-size: 1.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  cursor: grab;
+  margin-right: 0.4rem;
+}
+
+.todo__title:hover span {
+  visibility: visible;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  background-color: var(--color-grey-400);
+  height: 4.4rem;
+  padding: 0 1.6rem;
+  border-radius: 1.2rem;
+}
+
+.item > input {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-grey-800);
+}
+
+.btn__container {
+  display: none;
+}
+
+.btn__container > button {
+  border: none;
+  font-size: 1.4rem;
+  background-color: transparent;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: var(--color-prim);
+  border-radius: 0.4rem;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn__container > button:hover {
+  background-color: var(--btn-hover);
+}
+
+.todo__title:hover .btn__container {
+  display: flex;
+}
+
+.todo:hover .btn__container {
+  display: flex;
+}
+
+.todo__detail {
+  flex: 1;
+  display: flex;
+  gap: 0.8rem;
+  width: 100%;
+  min-height: 4.8rem;
+  align-items: center;
+  border: 1px solid var(--color-grey-900);
+  border-radius: 1.2rem;
+  padding: 0 1.6rem;
+  background-color: #fff;
+}
+
+.todo:hover span {
+  visibility: visible;
+}
+
+.todo__detail > input:nth-child(2) {
+  flex: 1;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-grey-800);
+  font-weight: 600;
+  overflow-y: scroll;
+  background-color: transparent;
+}
+
+.todo__detail > input:nth-child(2):focus {
+  outline: none;
+}
+
+.change__container {
+  width: 47.6rem;
+}
+
+#progressBar {
+  width: 100%;
+  height: 0.8rem;
+  appearance: none;
+}
+/* 針對不同瀏覽器的進度條樣式 */
+#progressBar::-webkit-progress-bar {
+  background-color: #e0e0e0; /* 背景顏色 */
+  border-radius: 0.4rem; /* 圓角 */
+}
+
+#progressBar::-webkit-progress-value {
+  background-color: var(--color-prim); /* 進度顏色 */
+  border-radius: 0.4rem; /* 圓角 */
+}
+
+#progressBar::-moz-progress-bar {
+  background-color: var(--color-prim); /* 進度顏色 */
+}
+
+.progress__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+}
+
+.progressBar__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--color-grey-800);
+}
+
+.reviewBtn {
+  width: 100%;
+  height: 4.4rem;
+  border: none;
+  background-color: var(--color-prim);
+  color: #fff;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reviewBtn:hover {
+  background-color: var(--color-prim-dark);
+}
+
+.checkbtn {
+  border: none;
+  background-color: transparent;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--color-prim);
+}
+
+.checkbtn:hover {
+  background-color: var(--btn-hover);
+}
+
+.hidden {
+  display: none;
+}
+
+.finish__item {
+  height: 4.8rem;
+  border: 1px solid var(--color-grey-800);
+  border-radius: 1.2rem;
+  padding: 0 1.6rem;
+}
+
+.done {
+  text-decoration: line-through;
+  font-size: 1.4rem;
+  flex: 1;
+  font-weight: 400;
+  color: var(--color-grey-900);
+}
+
+.reseBtn {
+  border: none;
+  border-radius: 0.8rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  cursor: pointer;
+}
+
+.reseBtn:hover {
+  background-color: var(--btn-hover);
+}
+
+.todolist {
+  max-height: calc(100%-3.2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  width: 100%;
+
+  overflow-y: auto;
+}
+
+/* 編輯樣式 */
+
+.todo.editing p {
+  background-color: transparent;
+  padding: 0.4rem 0;
+  border-radius: 0.4rem;
+  border: none;
+  min-width: 10rem;
+}
+
+.todo.editing p:focus {
+  border: none;
+  outline: none;
+}
+
+/* 編輯時禁用 hover 效果 */
+.todo.editing:hover .btn__container {
+  display: none !important;
+}
+
+/* 禁用編輯時的拖曳功能 */
+
+.title-input:focus {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0.4rem;
+  line-height: 2.4rem;
+}
+
+.title-input::placeholder {
+  font-size: 1.4rem;
+  color: var(--color-grey-500);
+}
+
+.new-title-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.new-title-btns.hidden {
+  display: none;
+}
+
+.todo__title.editing .btn__container {
+  display: none;
+}
+
+/* 標題的基本樣式 */
+.todo__title .btn__container {
+  display: none; /* 預設隱藏編輯和刪除按鈕 */
+}
+
+.todo__title:hover .btn__container {
+  display: flex; /* hover 時顯示按鈕 */
+}
+
+/* 新增標題時的樣式 */
+.todo__title.editing .btn__container {
+  display: none !important; /* 編輯時強制隱藏按鈕 */
+}
+
+.todo__title.editing .checkbtn {
+  display: block; /* 編輯時顯示確認按鈕 */
+}
+
+.todo__title .checkbtn {
+  display: none; /* 預設隱藏確認按鈕 */
+}
+
+.focus {
+  border: 2px solid var(--color-prim) !important;
+  box-shadow: 0 0.4rem 0.6rem rgba(114, 120, 141, 0.15);
+}
+
+.titleFocus {
+  border: 2px solid var(--color-prim);
+  box-shadow: 0 0.4rem 0.6rem rgba(114, 120, 141, 0.15);
+}
+
+.todo__detail > input[type='checkbox'] {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  width: 1.6rem;
+  height: 1.6rem;
+}
