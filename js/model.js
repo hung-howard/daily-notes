@@ -2,6 +2,8 @@ export const state = {
   notes: [],
 };
 
+console.log(state);
+
 const createNote = function (text, type = 'item') {
   return {
     id: Date.now(),
@@ -11,8 +13,6 @@ const createNote = function (text, type = 'item') {
     checked: false,
   };
 };
-
-console.log(state);
 
 const saveNotes = function () {
   localStorage.setItem('notes', JSON.stringify(state.notes));
@@ -53,6 +53,14 @@ export const reorderNotes = function (fromIndex, toIndex) {
   const [movedItem] = state.notes.splice(fromIndex, 1);
   state.notes.splice(toIndex, 0, movedItem);
   saveNotes();
+};
+
+export const toggleCheck = function (id) {
+  const note = state.notes.find((note) => note.id === id);
+  if (note) {
+    note.checked = !note.checked;
+    saveNotes();
+  }
 };
 
 const init = function () {

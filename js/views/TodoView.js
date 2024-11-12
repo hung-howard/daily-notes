@@ -255,7 +255,7 @@ class TodoView {
           <div class="todo__detail">
             <input 
               type="checkbox" 
-             
+              ${note.checked && 'checked'}
             >
             <input 
               type="text" 
@@ -275,7 +275,10 @@ class TodoView {
   }
 
   render(data) {
-    const markup = data.map((note) => this.generateMarkup(note)).join('');
+    const unfinishedNotes = data.filter(
+      (note) => !note.checked || note.type === 'title'
+    );
+    const markup = unfinishedNotes.map(this.generateMarkup).join('');
     this._parentElement.innerHTML = markup;
 
     // 找到正在編輯的 title
@@ -434,6 +437,23 @@ class TodoView {
       }
 
       // 調用 handler 來更新模型
+      handler(id);
+    });
+  }
+
+  addHandleToggle(handler) {
+    this._parentElement.addEventListener('click', (e) => {
+      const checkbox = e.target.closest('input');
+      if (!checkbox) return;
+
+      //
+      e.stopPropagation();
+
+      const item = checkbox.closest('.todo');
+      if (!item) return;
+
+      const id = Number(item.dataset.id);
+
       handler(id);
     });
   }

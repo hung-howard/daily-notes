@@ -430,6 +430,15 @@ li > span {
   border-radius: 0.8rem;
   cursor: pointer;
   transition: all 0.2s;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 2rem;
 }
 
 .reviewBtn:hover {
@@ -470,7 +479,7 @@ li > span {
   color: var(--color-grey-900);
 }
 
-.reseBtn {
+.resetBtn {
   border: none;
   border-radius: 0.8rem;
   background-color: transparent;
@@ -480,7 +489,7 @@ li > span {
   cursor: pointer;
 }
 
-.reseBtn:hover {
+.resetBtn:hover {
   background-color: var(--btn-hover);
 }
 
@@ -576,8 +585,14 @@ li > span {
 
 .todo__detail > input[type='checkbox'] {
   position: relative;
-  z-index: 2;
+
   cursor: pointer;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.finish__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
