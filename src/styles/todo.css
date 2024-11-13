@@ -1,40 +1,3 @@
-:root {
-  --color-grey-900: #282f38;
-  --color-grey-800: #49535f;
-  --color-grey-700: #687380;
-  --color-grey-600: #89929c;
-  --color-grey-500: #adb5bd;
-  --color-grey-400: #ced4da;
-  --color-grey-300: #dee2e6;
-  --color-grey-200: #e9ecef;
-  --color-grey-100: #f8f9fa;
-
-  --color-prim: #0b56ae;
-  --color-prim-dark: #064084;
-
-  --btn-hover: #e6eef6e3;
-}
-*,
-*::after,
-*::before {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-html {
-  font-size: 62.5%;
-  height: 100%;
-}
-
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Inter', sans-serif;
-  background-image: linear-gradient(to bottom right, #24d6d6, #0c1cb2);
-  min-height: 100vh;
-}
-
 .overlay {
   position: fixed;
   top: 0;
@@ -60,8 +23,8 @@ body {
   height: 71rem;
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 3rem 4rem 1.6rem rgba(0, 0, 0, 0.2);
+  /* border: 1px solid rgba(255, 255, 255, 0.6); */
+  box-shadow: 0 2rem 6rem 0.6rem rgba(2, 21, 67, 0.2);
 }
 
 nav {
@@ -72,13 +35,16 @@ nav {
   border-bottom: 1px solid #fff;
   width: 100%;
   position: relative;
+  font-style: italic;
 }
 
 nav > h1 {
+  color: var(--color-grey-900);
+  letter-spacing: 0.1rem;
   flex: 1;
   text-align: center;
   font-size: 2.4rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 4rem;
 }
 
@@ -106,23 +72,47 @@ nav > h1 {
   background-color: #fff;
   padding: 0.4rem;
   border-radius: 1.2rem;
+  position: relative;
+}
+
+.switch-tabs::before {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: calc(100% - 0.8rem);
+  background-color: var(--color-prim);
+  border-radius: 0.8rem;
+  left: 0.4rem;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.switch-tabs.slide-right::before {
+  transform: translateX(calc(100% - 0.4rem));
 }
 
 .tab {
   font-weight: 400;
   color: var(--color-grey-600);
   border: none;
-  background-color: #fff;
+  background-color: transparent;
   flex: 1;
   cursor: pointer;
   height: 3.6rem;
   font-size: 1.6rem;
   border-radius: 0.8rem;
+  position: relative; /* 添加這行 */
+  z-index: 1; /* 添加這行 */
+  transition: color 0.3s ease; /* 添加這行 */
 }
 
-.active {
-  background-color: var(--color-prim);
+.tab.active {
+  background-color: transparent;
   color: #fff;
+}
+
+.tab:not(.active) {
+  color: var(--color-grey-600);
 }
 
 .todolist__container {
@@ -141,7 +131,7 @@ nav > h1 {
 h2 {
   text-align: center;
   font-size: 1.8rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-grey-900);
 }
 
@@ -415,7 +405,7 @@ li > span {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.6rem;
+  gap: 0.8rem;
   font-size: 1.4rem;
   font-weight: 400;
   color: var(--color-grey-800);
@@ -461,7 +451,7 @@ li > span {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .finish__item {
@@ -475,8 +465,8 @@ li > span {
   text-decoration: line-through;
   font-size: 1.4rem;
   flex: 1;
-  font-weight: 400;
-  color: var(--color-grey-900);
+  font-weight: 600;
+  color: var(--color-grey-800);
 }
 
 .resetBtn {
@@ -487,6 +477,7 @@ li > span {
   width: 3.2rem;
   height: 3.2rem;
   cursor: pointer;
+  color: var(--color-prim);
 }
 
 .resetBtn:hover {

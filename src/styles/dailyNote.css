@@ -1,0 +1,83 @@
+.dailyNote {
+  width: 64rem;
+  margin-top: 1.6rem;
+  background-color: #fff;
+  padding: 2.4rem;
+  border-radius: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.dailyNote__head {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.title > h1 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 4rem;
+  color: var(--color-grey-900);
+}
+
+.dailyNote__Btn button {
+  border: none;
+  background-color: transparent;
+  font-size: 1.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  color: var(--color-grey-900);
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.dailyNote__Btn button:hover {
+  background-color: var(--btn-hover);
+}
+
+.savBtn__container {
+  align-self: flex-end;
+}
+
+.savBtn__container button:first-child {
+  border: 1px solid #4b82c4;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-grey-900);
+  width: 8.2rem;
+  height: 4rem;
+  margin-right: 0.8rem;
+
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.savBtn__container button:first-child:hover {
+  background-color: var(--btn-hover);
+}
+
+.savBtn__container button:nth-child(2) {
+  border: none;
+  color: #fff;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  width: 8.2rem;
+  height: 4rem;
+  background-color: #4b82c4;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.savBtn__container button:nth-child(2):hover {
+  background-color: var(--color-prim-dark);
+}

@@ -225,7 +225,7 @@ class TodoView {
     });
   }
 
-  generateMarkup(note) {
+  _generateMarkup(note) {
     if (note.type === 'title') {
       return `
         <li class="todo__title ${note.isEditing ? 'editing' : ''}" 
@@ -281,7 +281,7 @@ class TodoView {
     const unfinishedNotes = data.filter(
       (note) => !note.checked || note.type === 'title'
     );
-    const markup = unfinishedNotes.map(this.generateMarkup).join('');
+    const markup = unfinishedNotes.map(this._generateMarkup).join('');
     this._parentElement.innerHTML = markup;
 
     // 找到正在編輯的 title

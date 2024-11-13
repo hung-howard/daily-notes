@@ -1,0 +1,45 @@
+:root {
+  --color-grey-900: #282f38;
+  --color-grey-800: #49535f;
+  --color-grey-700: #687380;
+  --color-grey-600: #89929c;
+  --color-grey-500: #adb5bd;
+  --color-grey-400: #ced4da;
+  --color-grey-300: #dee2e6;
+  --color-grey-200: #e9ecef;
+  --color-grey-100: #f8f9fa;
+
+  --color-prim: #0b56ae;
+  --color-prim-dark: #064084;
+
+  --btn-hover: #e6eef6e3;
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Inter', sans-serif;
+  background-image: linear-gradient(to bottom right, #66bab7, #005caf);
+  min-height: 100vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}

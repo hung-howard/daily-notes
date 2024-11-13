@@ -4,40 +4,60 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- CSS -->
+    <link rel="stylesheet" href="/src/styles/base.css">
+    <link rel="stylesheet" href="/src/styles/todo.css">
+    <link rel="stylesheet" href="/src/styles/dialog.css">
+    <link rel="stylesheet" href="/src/styles/dailyNote.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+TC:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
-    <!--css -->
-    <link rel="stylesheet" href="style.css" />
-    <title>Daily Notes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   </head>
   <body>
+
+    <dialog hidden>
+      <div class="dialog__container">
+        <button class="xmark fa-solid fa-xmark"></button>
+        <div class="title__container">
+          <h1>今日回顧</h1>
+          <p class="date">2024/10/20</p>
+        </div>
+
+        <div class="finishNote__container">
+          <p>太棒了！以下是您今天完成的所有任務。
+            歡迎記錄一下完成心得，儲存後將開始新的一天！</p>
+          <div class="finishNote">
+            <textarea class="addExperience"  placeholder="輸入今日心得感想..." ></textarea>
+            <h3>今日完成事項</h3>
+            <ul class="finish__List">
+              <!-- <li class="finish__note" >
+                <i class="fa-solid fa-circle"></i>
+                <p>sasdas</p>
+              </li> -->
+            </ul>
+           
+          </div>
+          <button class="saveBtn">儲存回顧</button>
+        </div >
+      </div>
+    </dialog>
+    
     <main class="main__container">
-      <!-- nav -->
       <nav class="nav">
         <h1>Daily Notes</h1>
       </nav>
-      <!-- 切換 -->
       <div class="switch__container">
         <div class="switch-tabs">
           <button class="tab active">待辦事項</button>
           <button class="tab">每日回顧</button>
         </div>
       </div>
-
-      <section class="task__container">
-        <!-- 增加任務 -->
+      <section class="task__container ">
         <div class="todolist__container">
           <div class="todolist">
             <h2>今日待辦事項</h2>
@@ -51,7 +71,6 @@
             </div>
             <div class="todo-container">
               <ul class="draggable__title-list">
-                <!--
                 <li class="todo__title "  draggable="true">
                   <span class="fa-solid fa-grip-vertical"></span>
                   <div class="item">
@@ -63,10 +82,7 @@
                     <button class="fa-solid fa-check checkbtn hidden"></button>
                   </div>
                 </li>
-                
-
-                
-              <li class="todo " draggable="true">
+               <li class="todo " draggable="true">
                 <span class="fa-solid fa-grip-vertical"></span>
                 <div class="todo__detail">
                   <input type="checkbox" ></input>
@@ -78,7 +94,7 @@
                   <button class="fa-solid fa-check checkbtn hidden"></button>
                 </div>
               </li>
-              --></ul>
+              </ul>
               <div class="addNewTitle">
                 <button class="addNewTitle__Btn">
                   <i class="fa-plus"></i>新增分類標題
@@ -87,7 +103,6 @@
             </div>
           </div>
         </div>
-        <!-- 完成任務  -->
         <div class="todolist__container">
           <div class="todolist">
             <h2>今日已完成項目</h2>
@@ -99,23 +114,48 @@
               </div>
             </div>
             <div class="todo-container">
-              <ul class="finish__container">
-                <!-- 
+              <ul class="finish__container"> 
                 <li class="finish__item" draggable="true">
                   <label class="done">寫文件</label>
                   <div>
                     <button class="fas fa-rotate-left reseBtn"></button>
                   </div>
                 </li>
-              --></ul>
+              </ul>
             </div>
             <button class="reviewBtn">今日回顧</button>
           </div>
         </div>
       </section>
-
-      <div class="overlay hidden"></div>
+      <section class="dailyNote hidden">
+        <div class="dailyNote__head">
+          <div class="title">
+            <h1>今日回顧</h1>
+            <p class="date">2024/10/20</p>
+          </div>
+          <div class="dailyNote__Btn">
+            <button class="fa-solid fa-pen"></button>
+            <button class="fa-solid fa-trash"></button>
+          </div>
+        </div>
+        <div class="finishNote">
+          <textarea class="addExperience"  placeholder="輸入今日心得感想..." ></textarea>
+          <h3>今日完成事項</h3>
+          <ul class="finish__List">
+            <li class="finish__note" >
+              <i class="fa-solid fa-circle"></i>
+              <p>sasdas</p>
+            </li>
+          </ul>
+        </div>
+        <div class="savBtn__container">
+          <button>取消</button>
+          <button>儲存</button>
+        </div>
+      </section>
+      <div class="overlay hidden">
+      </div>
     </main>
-    <script type="module" src="js/controller.js"></script>
+    <script type="module" src="./src/js/controller.js"></script>
   </body>
 </html>
