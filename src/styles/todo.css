@@ -450,10 +450,6 @@ li > span {
   background-color: var(--btn-hover);
 }
 
-.hidden {
-  display: none !important;
-}
-
 .finish__item {
   height: 4.8rem;
   border: 1px solid var(--color-grey-800);

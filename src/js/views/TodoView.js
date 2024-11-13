@@ -35,6 +35,7 @@ class TodoView {
         id: Date.now(),
         text: '',
         isEditing: true,
+        type: 'title',
       };
       handler(newNote);
     });
@@ -225,96 +226,6 @@ class TodoView {
     });
   }
 
-  _generateMarkup(note) {
-    if (note.type === 'title') {
-      return `
-        <li class="todo__title ${note.isEditing ? 'editing' : ''}" 
-            draggable="true" 
-            data-id=${note.id}>
-          <span class="fa-solid fa-grip-vertical"></span>
-          <div class="item ${note.isEditing ? 'titleFocus' : ''}">
-            <input 
-              type="text" 
-              class="title-input"
-              value="${note.text}"
-              placeholder="輸入標題..."
-              autocomplete="off"
-              ${note.isEditing ? '' : 'disabled'}
-            />
-            <div class="btn__container">
-              <button class="fa-solid fa-pen"></button>
-              <button class="fa-solid fa-trash"></button>
-            </div>
-            <button class="fa-solid fa-check checkbtn ${
-              note.isEditing ? '' : 'hidden'
-            }"></button>
-          </div>
-        </li>
-      `;
-    } else {
-      return `
-        <li class="todo" draggable="true" data-id=${note.id}>
-          <span class="fa-solid fa-grip-vertical"></span>
-          <div class="todo__detail">
-            <input 
-              type="checkbox" 
-              ${note.checked && 'checked'}
-            >
-            <input 
-              type="text" 
-              class="todo-input ${note.checked ? 'done' : ''}" 
-              value="${note.text}"
-              disabled
-            />
-            <div class="btn__container">
-              <button class="fa-solid fa-pen"></button>
-              <button class="fa-solid fa-trash"></button>
-            </div>
-            <button class="fa-solid fa-check checkbtn hidden"></button>
-          </div>
-        </li>
-      `;
-    }
-  }
-
-  render(data) {
-    const unfinishedNotes = data.filter(
-      (note) => !note.checked || note.type === 'title'
-    );
-    const markup = unfinishedNotes.map(this._generateMarkup).join('');
-    this._parentElement.innerHTML = markup;
-
-    // 找到正在編輯的 title
-    const editingTitle = this._parentElement.querySelector(
-      '.todo__title.editing'
-    );
-    if (editingTitle) {
-      const titleInput = editingTitle.querySelector('.title-input');
-      const itemDiv = editingTitle.querySelector('.item');
-      const btnContainer = editingTitle.querySelector('.btn__container');
-      const confirmBtn = editingTitle.querySelector('.checkbtn');
-
-      // 設置編輯狀態的 UI
-      if (titleInput) {
-        titleInput.disabled = false;
-        titleInput.focus();
-      }
-      if (itemDiv) {
-        itemDiv.classList.add('titleFocus');
-      }
-      if (btnContainer) {
-        btnContainer.style.display = 'none';
-      }
-      if (confirmBtn) {
-        confirmBtn.style.display = 'block';
-        confirmBtn.classList.remove('hidden');
-      }
-
-      // 顯示遮罩層
-      this._overlay.classList.remove('hidden');
-    }
-  }
-
   addHandlerReorder(handler) {
     this._parentElement.addEventListener('reorder', (e) => {
       handler(e.detail.fromIndex, e.detail.toIndex);
@@ -459,6 +370,96 @@ class TodoView {
 
       handler(id);
     });
+  }
+
+  _generateMarkup(note) {
+    if (note.type === 'title') {
+      return `
+        <li class="todo__title ${note.isEditing ? 'editing' : ''}" 
+            draggable="true" 
+            data-id=${note.id}>
+          <span class="fa-solid fa-grip-vertical"></span>
+          <div class="item ${note.isEditing ? 'titleFocus' : ''}">
+            <input 
+              type="text" 
+              class="title-input"
+              value="${note.text}"
+              placeholder="輸入標題..."
+              autocomplete="off"
+              ${note.isEditing ? '' : 'disabled'}
+            />
+            <div class="btn__container">
+              <button class="fa-solid fa-pen"></button>
+              <button class="fa-solid fa-trash"></button>
+            </div>
+            <button class="fa-solid fa-check checkbtn ${
+              note.isEditing ? '' : 'hidden'
+            }"></button>
+          </div>
+        </li>
+      `;
+    } else {
+      return `
+        <li class="todo" draggable="true" data-id=${note.id}>
+          <span class="fa-solid fa-grip-vertical"></span>
+          <div class="todo__detail">
+            <input 
+              type="checkbox" 
+              ${note.checked && 'checked'}
+            >
+            <input 
+              type="text" 
+              class="todo-input ${note.checked ? 'done' : ''}" 
+              value="${note.text}"
+              disabled
+            />
+            <div class="btn__container">
+              <button class="fa-solid fa-pen"></button>
+              <button class="fa-solid fa-trash"></button>
+            </div>
+            <button class="fa-solid fa-check checkbtn hidden"></button>
+          </div>
+        </li>
+      `;
+    }
+  }
+
+  render(data) {
+    const unfinishedNotes = data.filter(
+      (note) => !note.checked || note.type === 'title'
+    );
+    const markup = unfinishedNotes.map(this._generateMarkup).join('');
+    this._parentElement.innerHTML = markup;
+
+    // 找到正在編輯的 title
+    const editingTitle = this._parentElement.querySelector(
+      '.todo__title.editing'
+    );
+    if (editingTitle) {
+      const titleInput = editingTitle.querySelector('.title-input');
+      const itemDiv = editingTitle.querySelector('.item');
+      const btnContainer = editingTitle.querySelector('.btn__container');
+      const confirmBtn = editingTitle.querySelector('.checkbtn');
+
+      // 設置編輯狀態的 UI
+      if (titleInput) {
+        titleInput.disabled = false;
+        titleInput.focus();
+      }
+      if (itemDiv) {
+        itemDiv.classList.add('titleFocus');
+      }
+      if (btnContainer) {
+        btnContainer.style.display = 'none';
+      }
+      if (confirmBtn) {
+        confirmBtn.style.display = 'block';
+        confirmBtn.classList.remove('hidden');
+      }
+
+      // 顯示遮罩層
+      this._overlay.classList.remove('hidden');
+    }
   }
 }
 
