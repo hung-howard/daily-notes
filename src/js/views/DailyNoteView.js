@@ -2,12 +2,15 @@ class DailyNoteView {
   _saveBtn = document.querySelector('.saveBtn');
   _parentElement = document.querySelector('.scroll__container');
   _dialog = document.querySelector('dialog');
+  _popup = document.querySelector('.popup');
+  _tabs = document.querySelectorAll('.tab');
+  _taskContainer = document.querySelector('.task__container');
+  _dailyNote = document.querySelector('.dailyNote');
 
   addHandlerSave(handler) {
     this._saveBtn.addEventListener('click', (e) => {
       e.preventDefault();
 
-      //獲取 dialog 中的 textarea
       const experience = document.querySelector(
         '.dialog__container .addExperience'
       ).value;
@@ -15,6 +18,17 @@ class DailyNoteView {
       handler(experience);
 
       this._dialog.close();
+
+      this._popup.classList.remove('hidden');
+      setTimeout(() => {
+        this._popup.classList.add('hidden');
+      }, 2000);
+
+      this._tabs.forEach((tab) => tab.classList.remove('active'));
+      this._tabs[1].classList.add('active');
+
+      this._taskContainer.classList.add('hidden');
+      this._dailyNote.classList.remove('hidden');
     });
   }
 
@@ -44,12 +58,10 @@ class DailyNoteView {
       const textarea = content.querySelector('.addExperience');
       const saveBtnContainer = content.querySelector('.savBtn__container');
 
-      //處理 textarea 屬性
       textarea.readOnly = false;
       textarea.classList.add('textarea-focus');
       textarea.focus();
 
-      //顯示Btn
       saveBtnContainer.classList.remove('hidden');
 
       handler(date, textarea);
@@ -67,7 +79,6 @@ class DailyNoteView {
       const textarea = content.querySelector('.addExperience');
       const saveBtnContainer = content.querySelector('.savBtn__container');
 
-      //UI
       textarea.readOnly = true;
       textarea.classList.remove('textarea-focus');
       saveBtnContainer.classList.add('hidden');
@@ -88,7 +99,6 @@ class DailyNoteView {
 
       textarea.value = textarea.dataset.originalContent;
 
-      //UI
       textarea.readOnly = true;
       textarea.classList.remove('textarea-focus');
       saveBtnContainer.classList.add('hidden');
@@ -96,7 +106,6 @@ class DailyNoteView {
   }
 
   _generateCompletedTasksMarkup(tasks) {
-    // 確保只渲染 checked 為 true 且 type 為 'item' 的任務
     const completedTasks = tasks.filter(
       (task) => task.checked && task.type === 'item'
     );
@@ -110,7 +119,7 @@ class DailyNoteView {
         </li>
       `
       )
-      .join(''); // 不要忘記 join，否則會出現逗號
+      .join('');
   }
 
   _generateMarkup(data) {

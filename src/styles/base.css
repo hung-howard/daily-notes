@@ -47,3 +47,49 @@ body {
 .hidden {
   display: none !important;
 }
+
+.popup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  position: absolute;
+  left: 2.4rem;
+  bottom: 2.4rem;
+  width: 16rem;
+  height: 4.4rem;
+  background-color: #fff;
+  border-radius: 0.4rem;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.popup__icon {
+  color: #074b1a;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e5f7ea;
+}
+
+.popup__text {
+  color: #074b1a;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 100;
+    transform: translateY(0);
+  }
+}
